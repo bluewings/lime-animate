@@ -7,3 +7,12 @@ div(style='background-color:#fff;height:500px;')
     
             a(href='/')
                 | 홈으로 돌아가기
+
+            br
+
+            .card(ng-click='')
+                button(ng-click='moveTo("/", $event)')
+                    | 에니메이션 링크
+
+style
+    | .card {width:100px;height:150px;margin:10px;background-color:lightYellow;border:5px solid gray;float:left;}

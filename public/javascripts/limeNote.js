@@ -46,12 +46,16 @@
 
                     document.body.appendChild(tweenTarget.cloned);
 
+                    $(document.body).css('-webkit-perspective', '800px');
+
                     $(tweenTarget.cloned).css({
                         position: 'absolute',
                         top: tweenTarget.offset.top,
                         left: tweenTarget.offset.left,
                         width: $(tweenTarget.cloned).outerWidth(),
-                        WebkitTransform: 'rotateY(0)'
+                        WebkitTransform: 'rotateY(0)',
+                        WebkitTransformOrigin: '0% 100%',
+                        zIndex: 1001
                     });
 
                     setTimeout(function() {
@@ -60,8 +64,8 @@
                         top: 0,
                         left: 0,
                         width: '100%',
-                        opacity: 0,
-                        WebkitTransform: 'rotateY(180deg)'
+                        opacity: 0.5,
+                        WebkitTransform: 'rotateY(-180deg)'
 
                     }).one('webkitTransitionEnd', function(event) {
 
@@ -72,7 +76,7 @@
 
                         done();
                     });
-                    }, 0);
+                    }, 0.5);
 
                     
 
@@ -129,8 +133,9 @@
                         top: tweenTarget.offset.top,
                         left: tweenTarget.offset.left,
                         width: $(tweenTarget.cloned).outerWidth(),
-                        opacity: 0,
-                        WebkitTransform: 'rotateY(180deg)'
+                        opacity: 1,
+                        zIndex: 1000,
+                       // WebkitTransform: 'rotateY(180deg)'
                     });
 
 
@@ -141,7 +146,8 @@
                         left: 0,
                         width: '100%',
                         opacity: 1,
-                        WebkitTransform: 'rotateY(0)'
+
+                      //  WebkitTransform: 'rotateY(0)'
 
                     }).one('webkitTransitionEnd', function(event) {
 
@@ -544,7 +550,7 @@ var afterImg;
 
 
     });
-    app.controller('lime.control.view', function ($scope) {
+    app.controller('lime.control.view', function ($scope, $location) {
 
         $scope.data = {};
 
@@ -552,6 +558,61 @@ var afterImg;
 
         console.log(test);
         $scope.pageClass = 'page-about';
+
+
+
+        $scope.moveTo = function(uri, event) {
+
+            var card = $(event.target).closest('.card');
+
+            
+            //tweenTarget = ;
+
+                    html2canvas(card.get(0), {
+
+                        onrendered: function(canvas) {
+
+                            tweenTarget = {
+                                cloned: document.createElement('img'),
+                                offset: card.offset()
+                            };
+
+                            
+
+
+                            //tweenTarget = document.createElement('img');
+                            
+                            //document.body.appendChild(asis);
+                            tweenTarget.cloned.src = canvas.toDataURL();
+
+                            card.css('visibility', 'hidden');
+
+                            console.log('>>> uri clicked');
+
+                            $scope.$apply(function() {
+
+                                $location.path(uri);
+
+                            });
+
+                            
+
+                            console.log('>>> uri clicked after');
+
+                            
+
+                            //alert('done');
+
+                        }
+
+                    });
+
+            
+
+            //$location.
+            
+
+        };
 
 
 
