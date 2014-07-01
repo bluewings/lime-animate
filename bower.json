@@ -1,0 +1,24 @@
+{
+  "name": "lime-animate",
+  "version": "0.0.0",
+  "authors": [
+    "bluewings <mygenie3@naver.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-animate": "~1.2.18",
+    "angular-bootstrap": "~0.11.0",
+    "bootstrap-sass": "~3.0.2",
+    "angular-sanitize": "~1.2.18",
+    "angular-resource": "~1.2.18",
+    "angular-route": "~1.2.18",
+    "html2canvas": "~0.4.1"
+  }
+}

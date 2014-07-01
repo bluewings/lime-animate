@@ -1,0 +1,15 @@
+h1 테스트
+
+.card(ng-repeat='card in cards', style='background-color:{{card.bgcolor}};')
+    | {{card.title}}
+    br
+    a(ng-href='/view/{{card.id}}')
+        | 이동 링크
+    br
+    button(ng-click='moveTo("/view/" + card.id, $event)')
+        | 에니메이션 링크
+
+
+div(style='clear:both')
+style
+    | .card {width:100px;height:150px;margin:10px;background-color:lightYellow;border:5px solid gray;float:left;}
